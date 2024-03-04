@@ -24,6 +24,6 @@ function isValid(s: string): boolean {
     return stack.isEmpty();
 }
 
-console.log(isValid('}{'));
-console.log(isValid('(){}[]{'));
-console.log(isValid('([{}]){}[]')); 
+console.log(isValid('}{')); // false
+console.log(isValid('(){}[]{')); // false
+console.log(isValid('([{}]){}[]')); // true

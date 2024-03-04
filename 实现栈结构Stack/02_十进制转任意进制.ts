@@ -10,7 +10,7 @@ function baseConverter(delNumber: number, base: number) {
     while (delNumber > 0) {
         let remainder = delNumber % base;
         stack.push(remainder);
-        delNumber = Math.floor(delNumber % base); // 向下取整
+        delNumber = Math.floor(delNumber / base); // 向下取整
     }
 
     while (!stack.isEmpty()) {
@@ -20,9 +20,9 @@ function baseConverter(delNumber: number, base: number) {
     return target;
 }
 
-console.log(baseConverter(520, 2));
-console.log(baseConverter(520, 8));
-console.log(baseConverter(520, 16));
-console.log(baseConverter(1314, 2));
-console.log(baseConverter(1314, 8));
-console.log(baseConverter(1314, 16));
+console.log(baseConverter(520, 2)); // 1000001000
+console.log(baseConverter(520, 8)); // 1010
+console.log(baseConverter(520, 16)); // 208
+console.log(baseConverter(1314, 2)); // 10100100010
+console.log(baseConverter(1314, 8)); // 2442
+console.log(baseConverter(1314, 16)); // 522
