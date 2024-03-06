@@ -1,6 +1,6 @@
 interface IQueue<T> {
     // 入队
-    queue(element: T): void;
+    enqueue(element: T): void;
     // 出队
     dequeue(): T | undefined;
     // 返回队列中第一个元素（不改变队列）
@@ -14,7 +14,7 @@ interface IQueue<T> {
 class ArrayQueue<T> implements IQueue<T> {
     // 内部是通过数组保存
     private data: T[] = [];
-    queue(element: T): void {
+    enqueue(element: T): void {
         this.data.push(element);
     }
     dequeue(): T | undefined {
