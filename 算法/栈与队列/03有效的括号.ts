@@ -8,6 +8,11 @@
     3、最后，查看一下栈的length是否有值，若有值，返回false
 
 */ 
+
+/*
+    时间复杂度: O(n)
+    空间复杂度: O(n)
+*/ 
 function isValid(s: string): boolean {
     const stack: string[] = [];
 

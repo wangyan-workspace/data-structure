@@ -8,6 +8,11 @@
     只不过本题不要相邻元素做消除了，而是做运算！！！
 */
 
+/*
+    时间复杂度: O(n)
+    空间复杂度: O(n)
+*/ 
+
 function evalRPN(tokens: string[]): number {
     let helperStack: number[] = [];
     // 按照顺序来是先入栈 （+，-，*，/）相邻的后入栈的元素，
