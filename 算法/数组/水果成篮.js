@@ -6,6 +6,7 @@ function totalFruit(fruits) {
     arr = []; // 滑窗内数字集合
 
   while (end < len) {
+    // 处理逻辑内还是存在问题的，晚点看
     let types = new Set(arr);
     console.log("滑窗---", types);
 
@@ -26,4 +27,4 @@ function totalFruit(fruits) {
   return maxfruit;
 }
 
-console.log(totalFruit([3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4]));
+console.log(totalFruit([0,1,2]));
