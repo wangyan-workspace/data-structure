@@ -18,73 +18,73 @@
 
 // 版本一
 class MyStack {
-    private queue: number[];
-    private tempQueue: number[];
+  private queue: number[]; // 输入队列
+  private tempQueue: number[]; // 输出队列
 
-    constructor() {
-        this.queue = [];
-        this.tempQueue = [];
+  constructor() {
+    this.queue = []; // 输入队列
+    this.tempQueue = []; // 输出队列
+  }
+
+  push(x: number): void {
+    this.queue.push(x); // 输入队列push元素
+  }
+
+  pop(): number {
+    // tempQueue 备份 queue 中的数据
+    for (let i = 0, length = this.queue.length - 1; i < length; i++) {
+      this.tempQueue.push(this.queue.shift()!);
     }
+    let res = this.queue.pop()!;
 
-    push(x: number): void {
-        this.queue.push(x);
-    }
+    // 将queue数据还原
+    let temp: number[] = this.queue;
+    this.queue = this.tempQueue;
+    this.tempQueue = temp;
 
-    pop(): number {
-        // tempQueue 备份 queue 中的数据
-        for (let i = 0, length = this.queue.length - 1; i < length; i++) {
-            this.tempQueue.push(this.queue.shift()!);
-        }
-        let res = this.queue.pop()!;
+    return res;
+  }
 
-        // 将queue数据还原
-        let temp: number[] = this.queue;
-        this.queue = this.tempQueue;
-        this.tempQueue = temp;
+  top(): number {
+    const res: number = this.pop();
+    this.push(res); // 将弹出的元素重新入队
+    return res;
+  }
 
-        return res;
-    }
-
-    top(): number {
-        const res: number = this.pop();
-        this.push(res);
-        return res;
-    }
-
-    empty(): boolean {
-        return this.queue.length === 0;
-    }
+  empty(): boolean {
+    return this.queue.length === 0;
+  }
 }
 
 // 版本二
 class MyStack1 {
-    private queue: number[];
+  private queue: number[];
 
-    constructor() {
-        this.queue = [];
+  constructor() {
+    this.queue = []; // 队列
+  }
+
+  push(x: number): void {
+    this.queue.push(x); // 队列push元素
+  }
+
+  pop(): number {
+    for (let i = 0, length = this.queue.length - 1; i < length; i++) { // 队列中除了最后一个元素外，其他元素都放到队列的末尾   
+      this.queue.push(this.queue.shift()!);
     }
 
-    push(x: number): void {
-        this.queue.push(x);
-    }
+    return this.queue.shift()!;
+  }
 
-    pop(): number {
-        for (let i = 0, length = this.queue.length - 1; i < length; i++) {
-            this.queue.push(this.queue.shift()!);
-        }
+  top(): number {
+    const res = this.pop();
+    this.push(res); // 将弹出的元素重新入队
+    return res;
+  }
 
-        return this.queue.shift()!;
-    }
-
-    top(): number {
-        const res = this.pop();
-        this.push(res);
-        return res;
-    }
-
-    empty(): boolean {
-        return this.queue.length === 0;
-    }
+  empty(): boolean {
+    return this.queue.length === 0;
+  }
 }
 
-export { };
+export {};

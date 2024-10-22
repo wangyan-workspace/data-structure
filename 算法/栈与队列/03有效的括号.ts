@@ -17,6 +17,7 @@ function isValid(s: string): boolean {
     const stack: string[] = [];
 
     for (let i = 0; i < s.length; i++) {
+        // 如果是左括号，入栈对应右括号
         switch (s[i]) {
             case '(':
                 stack.push(")");
@@ -28,6 +29,7 @@ function isValid(s: string): boolean {
                 stack.push("}");
                 break;
             default:
+                // 如果是有括号，对应弹出栈顶元素，对比一下是否相同，若不同返回false
                 if (s[i] !== stack.pop()) {
                     return false;
                 }
