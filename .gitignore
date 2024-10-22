@@ -1,0 +1,24 @@
+
+# 忽略所有 .log 文件
+*.log
+ 
+# 忽略所有 .tmp 文件
+*.tmp
+ 
+# 忽略特定文件
+config.env
+ 
+# 忽略整个目录
+node_modules/
+ 
+# 忽略所有的 .pdf 文件，但跟踪特定的 mydoc.pdf
+*.pdf
+!mydoc.pdf
+ 
+# 忽略所有文件，但跟踪 .gitignore 和 foo.bar 文件
+*
+!.gitignore
+!foo.bar
+ 
+# 忽略所有在 build/ 目录下的 php 文件
+build/*.php
