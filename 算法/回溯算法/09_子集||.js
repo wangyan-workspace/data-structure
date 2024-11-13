@@ -11,7 +11,7 @@ var subsetsWithDup = function (nums) {
     // startIndex 记录下一层递归，搜索的起始位置
     result.push([...path]); // 收集子集，要放在终止条件的上面，否则会漏掉最后一个节点
     if (startIndex >= nums.length) {
-      // 终止条件
+      // 终止条件,可以不加
       return;
     }
 
