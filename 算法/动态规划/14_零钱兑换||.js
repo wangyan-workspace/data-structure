@@ -4,7 +4,7 @@
  * @return {number}
  */
 var change = function (amount, coins) {
-  const dp = new Array(amount + 1).fill(0); // dp[i]表示凑成i元的方法数
+  let dp = new Array(amount + 1).fill(0); // dp[i]表示凑成i元的方法数
   dp[0] = 1; // 初始化，凑成0元的方法数为1
 
   for (let i = 0; i < coins.length; i++) {
