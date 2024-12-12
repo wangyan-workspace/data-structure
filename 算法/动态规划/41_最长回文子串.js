@@ -1,0 +1,61 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+// 动态规划解法
+var longestPalindrome = function (s) {
+  const len = s.length; // 字符串长度
+  // 布尔类型的dp[i][j]：表示区间范围[i,j] （注意是左闭右闭）的子串是否是回文子串，如果是dp[i][j]为true，否则为false。
+  let dp = new Array(len).fill().map(() => new Array(len).fill(false)); // 初始化dp数组
+  let left = 0; // 记录回文子串起始位置
+  let maxLength = 0; // 记录回文子串最大长度
+
+  for (let i = len - 1; i >= 0; i--) {
+    // 从下往上遍历
+    for (let j = i; j < len; j++) {
+      // 从左往右遍历
+      if (s[i] === s[j]) {
+        // j - i <= 1 表示子串是一个长度为0或1的字符串，那么一定是回文子串
+        if (j - i <= 1) {
+          dp[i][j] = true;
+        } else if (dp[i + 1][j - 1]) {
+          // j - i > 1，表示子串长度大于1,那么判断dp[i][j]是否为回文子串，取决于dp[i + 1][j - 1]是否为回文子串
+          dp[i][j] = true;
+        }
+      }
+
+      if (dp[i][j] && j - i + 1 > maxLength) {
+        // 更新最大长度和起始位置
+        maxLength = j - i + 1;
+        left = i;
+      }
+    }
+  }
+
+  return s.substr(left, maxLength); // 截取最长回文子串
+};
+
+//双指针
+var longestPalindrome = function (s) {
+  let left = 0,
+    right = 0,
+    maxLength = 0;
+  const extend = (s, i, j, n) => {
+    // s为字符串 i,j为双指针 n为字符串长度
+    while (i >= 0 && j < n && s[i] === s[j]) {
+      if (j - i + 1 > maxLength) {
+        left = i; // 更新开始位置
+        right = j; // 更新结尾位置
+        maxLength = j - i + 1; // 更新子串最大长度
+      }
+      // 指针移动
+      i--;
+      j++;
+    }
+  };
+  for (let i = 0; i < s.length; i++) {
+    extend(s, i, i, s.length); // 以i为中心
+    extend(s, i, i + 1, s.length); // 以i和i+1为中心
+  }
+  return s.substr(left, maxLength);
+};
